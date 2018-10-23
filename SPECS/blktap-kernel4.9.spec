@@ -11,7 +11,8 @@ Source0: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{release}-buildroot
 Obsoletes: xen-blktap
 BuildRequires: e2fsprogs-devel, libaio-devel, systemd, autogen, autoconf, automake, libtool, libuuid-devel
-BuildRequires: xen-devel, kernel-headers, xen-dom0-libs-devel, zlib-devel, xen-libs-devel, libcmocka-devel, lcov, git
+BuildRequires: xen-devel, xen-dom0-libs-devel, zlib-devel, xen-libs-devel, libcmocka-devel, lcov, git
+BuildRequires: kernel-headers = 4.9.135
 Requires(post): systemd
 Requires(post): /sbin/ldconfig
 Requires(preun): systemd
@@ -129,6 +130,7 @@ fi
 %changelog
 * Mon Oct 22 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 3.12.0-1
 - Updated package name to blktap-kernel4.9 to offer it alongside kernel 4.9
+- It demands kernel-headers = 4.9.135
 
 * Mon Aug 06 2018 Mark Syms <mark.syms@citrix.com> - 3.12.0-1
 - CA-227096 Allow stashed passed fds to overwrite with the same name
