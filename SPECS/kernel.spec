@@ -19,10 +19,10 @@
 # This reduces the size of debuginfo.
 %define _find_debuginfo_opts -r
 
-Name: kernel
+Name: kernel-exp
 License: GPLv2
 Version: 4.9.135
-Release: 0.0.3
+Release: 0.0.4
 ExclusiveArch: x86_64
 ExclusiveOS: Linux
 Summary: The Linux kernel
@@ -274,6 +274,9 @@ fi
 %{_rpmconfigdir}/macros.d/macros.kernel
 
 %changelog
+* Wed Oct 24 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9.135-0.0.4
+- Changed Package name to kernel-exp
+
 * Sat Oct 20 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9.135-0.0.3
 - Updated to recent stable 4.9.135
 - Added Patch2 to Patch4
