@@ -13,7 +13,7 @@ Provides: blktap
 Obsoletes: xen-blktap
 BuildRequires: e2fsprogs-devel, libaio-devel, systemd, autogen, autoconf, automake, libtool, libuuid-devel
 BuildRequires: xen-devel, xen-dom0-libs-devel, zlib-devel, xen-libs-devel, libcmocka-devel, lcov, git
-BuildRequires: kernel-headers = 4.9.135
+BuildRequires: kernel-exp-headers = 4.9.135
 Requires(post): systemd
 Requires(post): /sbin/ldconfig
 Requires(preun): systemd
