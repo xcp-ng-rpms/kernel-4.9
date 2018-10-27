@@ -9,4 +9,4 @@ Branches:
 
 Built RPMs and source RPMs are available on https://updates.xcp-ng.org.
 
-Installation and uninstallation guids are available on https://github.com/xcp-ng/xcp/wiki/Alternate-kernel
+Installation and uninstallation guides are available on https://github.com/xcp-ng/xcp/wiki/Alternate-kernel
