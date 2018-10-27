@@ -22,7 +22,7 @@
 Name: kernel-exp
 License: GPLv2
 Version: 4.9.135
-Release: 0.0.4
+Release: 0.0.5
 ExclusiveArch: x86_64
 ExclusiveOS: Linux
 Summary: The Linux kernel
@@ -274,6 +274,9 @@ fi
 %{_rpmconfigdir}/macros.d/macros.kernel
 
 %changelog
+* Sat Oct 27 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9.135-0.0.5
+- Enabled kernel support for NFS Client 4.2, CephFS & NTFS write support
+
 * Wed Oct 24 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9.135-0.0.4
 - Changed Package name to kernel-exp
 

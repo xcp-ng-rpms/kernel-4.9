@@ -8,3 +8,5 @@ Branches:
 * `XS-x.y` (e.g. `XS-7.5`), when they exist, contain sources from the `x.y` release of XenServer, with trademarked or copyrighted material stripped if needed.
 
 Built RPMs and source RPMs are available on https://updates.xcp-ng.org.
+
+Installation and uninstallation guids are available on https://github.com/xcp-ng/xcp/wiki/Alternate-kernel
