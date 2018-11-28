@@ -21,8 +21,8 @@
 
 Name: kernel-exp
 License: GPLv2
-Version: 4.9.135
-Release: 0.0.5
+Version: 4.9.0
+Release: 0.0.6
 ExclusiveArch: x86_64
 ExclusiveOS: Linux
 Summary: The Linux kernel
@@ -40,12 +40,18 @@ Requires(post): coreutils kmod
 Requires(posttrans): coreutils dracut
 
 Source0: %{name}-%{version}.tar.gz
-Patch0: 4.9-kernel-blktap2-driver.patch
-Patch1: 0001-xen-privcmd-return-ENOTTY-for-unimplemented-IOCTLs.patch
-Patch2: 0001-xen-privcmd-Add-IOCTL_PRIVCMD_DM_OP.patch
-Patch3: 0001-xen-privcmd-add-IOCTL_PRIVCMD_RESTRICT.patch
-Patch4: restricted-privcmd.patch
-Patch99: abi-version-4.9
+Patch0: patch-4.9.135-136
+Patch1: patch-4.9.136-137
+Patch2: patch-4.9.137-138
+Patch3: patch-4.9.138-139
+Patch4: patch-4.9.139-140
+Patch5: patch-4.9.140-141
+Patch100: abi-version-4.9
+Patch101: 4.9-kernel-blktap2-driver.patch
+Patch102: 0001-xen-privcmd-return-ENOTTY-for-unimplemented-IOCTLs.patch
+Patch103: 0001-xen-privcmd-Add-IOCTL_PRIVCMD_DM_OP.patch
+Patch104: 0001-xen-privcmd-add-IOCTL_PRIVCMD_RESTRICT.patch
+Patch105: restricted-privcmd.patch
 
 Source1: kernel-%{version}-%{_arch}.config
 Source2: macros.kernel
