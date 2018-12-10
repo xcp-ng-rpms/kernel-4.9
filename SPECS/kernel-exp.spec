@@ -21,8 +21,8 @@
 
 Name: kernel-exp
 License: GPLv2
-Version: 4.9.135
-Release: 0.0.5
+Version: 4.9
+Release: 144.1
 ExclusiveArch: x86_64
 ExclusiveOS: Linux
 Summary: The Linux kernel
@@ -39,13 +39,113 @@ Provides: kernel-%{_arch} = %{version}-%{release}
 Requires(post): coreutils kmod
 Requires(posttrans): coreutils dracut
 
-Source0: %{name}-%{version}.tar.gz
-Patch0: 4.9-kernel-blktap2-driver.patch
-Patch1: 0001-xen-privcmd-return-ENOTTY-for-unimplemented-IOCTLs.patch
-Patch2: 0001-xen-privcmd-Add-IOCTL_PRIVCMD_DM_OP.patch
-Patch3: 0001-xen-privcmd-add-IOCTL_PRIVCMD_RESTRICT.patch
-Patch4: restricted-privcmd.patch
-Patch99: abi-version-4.9
+Source0: %{name}-%{version}.135.tar.gz
+
+# *** kernel.org incremental patches
+Patch0: patch-4.9.135-136
+Patch1: patch-4.9.136-137
+Patch2: patch-4.9.137-138
+Patch3: patch-4.9.138-139
+Patch4: patch-4.9.139-140
+Patch5: patch-4.9.140-141
+Patch6: patch-4.9.141-142
+Patch7:	patch-4.9.142-143
+Patch8: patch-4.9.143-144
+
+# *** XCP-NG patches.
+Patch100: abi-version-4.9
+Patch101: 4.9-kernel-blktap2-driver.patch
+
+# *** XenServer patches. Unmodified unless stated otherwise.
+Patch102: 0001-xen-privcmd-return-ENOTTY-for-unimplemented-IOCTLs.patch
+# Patch103 modified to make it apply to newer kernel: removed ARM part.
+Patch103: 0001-xen-privcmd-Add-IOCTL_PRIVCMD_DM_OP.patch
+Patch104: 0001-xen-privcmd-add-IOCTL_PRIVCMD_RESTRICT.patch
+Patch105: restricted-privcmd.patch
+Patch106: 0001-libfc-Revisit-kref-handling.patch
+Patch107: 0001-scsi-libfc-Fixup-disc_mutex-handling.patch
+Patch108: 0001-scsi-libfc-Do-not-take-rdata-rp_mutex-when-processin.patch
+Patch109: 0001-scsi-libfc-Do-not-drop-down-to-FLOGI-for-fc_rport_lo.patch
+Patch110: 0001-scsi-libfc-Do-not-login-if-the-port-is-already-start.patch
+Patch111: 0001-scsi-libfc-don-t-advance-state-machine-for-incoming-.patch
+Patch112: 0001-scsi-fcoe-Harden-CVL-handling-when-we-have-not-logge.patch
+Patch113: 0001-netfilter-ipset-Null-pointer-exception-in-ipset-list.patch
+Patch114: 0085-block-fs-untangle-fs.h-and-blk_types.h.patch
+Patch115: 0090-Replace-asm-uaccess.h-with-linux-uaccess.h-globally.patch
+Patch116: 0103-sched-headers-Prepare-to-remove-linux-cred.h-inclusi.patch
+Patch117: 0168-License-cleanup-add-SPDX-GPL-2.0-license-identifier-.patch
+Patch118: 0169-License-cleanup-add-SPDX-license-identifier-to-uapi-.patch
+Patch119: 0012-dlm-make-genl_ops-const.patch
+Patch120: 0014-dlm-don-t-save-callbacks-after-accept.patch
+Patch121: 0015-dlm-remove-lock_sock-to-avoid-scheduling-while-atomi.patch
+Patch122: 0016-dlm-don-t-specify-WQ_UNBOUND-for-the-ast-callback-wo.patch
+Patch123: 0017-dlm-fix-error-return-code-in-sctp_accept_from_sock.patch
+Patch124: 0018-genetlink-no-longer-support-using-static-family-IDs.patch
+Patch125: 0021-Replace-asm-uaccess.h-with-linux-uaccess.h-globally.patch
+Patch126: 0027-dlm-Fix-kernel-memory-disclosure.patch
+Patch127: 0028-dlm-Make-dismatch-error-message-more-clear.patch
+Patch128: 0029-dlm-Replace-six-seq_puts-calls-by-seq_putc.patch
+Patch129: 0030-dlm-Add-spaces-for-better-code-readability.patch
+Patch130: 0031-dlm-Improve-a-size-determination-in-table_seq_start.patch
+Patch131: 0032-dlm-Use-kcalloc-in-dlm_scan_waiters.patch
+Patch132: 0033-dlm-Improve-a-size-determination-in-dlm_recover_wait.patch
+Patch133: 0035-dlm-Use-kmalloc_array-in-make_member_array.patch
+Patch134: 0036-dlm-Use-kcalloc-in-two-functions.patch
+Patch135: 0037-dlm-Improve-a-size-determination-in-two-functions.patch
+Patch136: 0038-dlm-Delete-an-unnecessary-variable-initialisation-in.patch
+Patch137: 0039-dlm-print-log-message-when-cluster-name-is-not-set.patch
+Patch138: 0040-dlm-constify-kset_uevent_ops-structure.patch
+Patch139: 0042-uapi-linux-dlm_netlink.h-include-linux-dlmconstants.patch
+Patch140: 0043-dlm-use-sock_create_lite-inside-tcp_accept_from_sock.patch
+Patch141: 0044-License-cleanup-add-SPDX-GPL-2.0-license-identifier-.patch
+Patch142: 0045-License-cleanup-add-SPDX-license-identifier-to-uapi-.patch
+Patch143: 0001-DLM-Eliminate-CF_CONNECT_PENDING-flag.patch
+Patch144: 0005-DLM-fix-double-list_del.patch
+Patch146: 0008-DLM-retry-rcom-when-dlm_wait_function-is-timed-out.patch
+Patch147: 0010-DLM-fix-race-condition-between-dlm_recoverd_stop-and.patch
+Patch148: 0013-DLM-fix-conversion-deadlock-when-DLM_LKF_NODLCKWT-fl.patch
+Patch149: 0015-DLM-fix-overflow-dlm_cb_seq.patch
+Patch150: 0018-DLM-fix-NULL-pointer-dereference-in-send_to_sock.patch
+Patch151: 0019-dlm-recheck-kthread_should_stop-before-schedule.patch
+Patch152: 0020-dlm-remove-dlm_send_rcom_lookup_dump.patch
+Patch153: commit-info.patch
+Patch154: 0001-dma-add-dma_get_required_mask_from_max_pfn.patch
+Patch155: xen-balloon-hotplug-select-HOLES_IN_ZONE.patch
+Patch156: xen-balloon-Only-mark-a-page-as-managed-when-it-is-r.patch
+Patch157: 0001-pci-export-pci_probe_reset_function.patch
+Patch158: 0002-xen-pciback-provide-a-reset-sysfs-file-to-try-harder.patch
+Patch159: pciback-disable-root-port-aer.patch
+Patch160: pciback-mask-root-port-comp-timeout.patch
+Patch162: xen-netback-record-rx-queue-for-skb.patch
+Patch163: 0001-xen-netback-don-t-populate-the-hash-cache-on-XenBus-.patch
+Patch164: block-loop-only-flush-on-close-if-attached.patch
+Patch165: CA-135938-nfs-disconnect-on-rpc-retry.patch
+Patch166: sunrpc-force-disconnect-on-connection-timeout.patch
+Patch167: cifs__queue_reconnect_thread_with_a_delay.patch
+Patch168: tg3-alloc-repeat.patch
+Patch169: 0001-netfilter-ipset-Fix-race-between-dump-and-swap.patch
+Patch170: 0001-scsi-devinfo-Add-Microsoft-iSCSI-target-to-1024-sect.patch
+Patch171: dlm__increase_socket_backlog_to_avoid_hangs_with_16_nodes.patch
+Patch172: net-core__order-3_frag_allocator_causes_swiotlb_bouncing_under_xen.patch
+Patch173: idle_cpu-return-0-during-softirq.patch
+Patch174: call-kexec-before-offlining-noncrashing-cpus.patch
+Patch175: fnic-disable-tracing-by-default.patch
+Patch176: bnx2-disable-gro.patch
+Patch177: x86-apic-disable-physflat-under-xen.patch
+Patch178: map-1MiB-1-1.patch
+Patch179: default-xen-swiotlb-size-128MiB.patch
+Patch180: x86-xen-add-cpuid-est-flag-if-present-on-host-hw.patch
+Patch181: make-dev_load-noop.patch
+Patch184: silence-xen-watchdog.patch
+Patch185: disable-pm-timer.patch
+Patch186: xen-evtchn-Bind-dyn-evtchn-qemu-dm-interrupt-to-next-online-VCPU.patch
+Patch187: net-Do-not-scrub-ignore_df-within-the-same-name-spac.patch
+Patch188: 0001-libiscsi-Fix-race-between-iscsi_xmit_task-and-iscsi_.patch
+Patch189: CP-13181-net-openvswitch-add-dropping-of-fip-and-lldp.patch
+Patch190: build-mipi-dsi-as-a-module.patch
+Patch191: intel-gvt-g-enable-out-of-tree-compile.patch
+Patch192: debug-pwq-null-point-deref.patch
+
 
 Source1: kernel-%{version}-%{_arch}.config
 Source2: macros.kernel
@@ -274,6 +374,17 @@ fi
 %{_rpmconfigdir}/macros.d/macros.kernel
 
 %changelog
+* Mon Dec 10 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-144.1
+- Added kernel incremental patch to 4.9.144
+- Separated XCP-NG & XenServer patches with comments about modified ones.
+
+* Sun Dec 07 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-143.1
+- Added patches 106-192 and kernel incremental patch to 4.9.143.
+
+* Sun Dec 02 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-0.0.6
+- Changed kernel versioning to base 4.9. 
+- It uses 4.9.135 as base and applies incremental patches from there till 4.9.142.
+
 * Sat Oct 27 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9.135-0.0.5
 - Enabled kernel support for NFS Client 4.2, CephFS & NTFS write support
 
