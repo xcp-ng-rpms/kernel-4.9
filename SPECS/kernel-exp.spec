@@ -22,7 +22,7 @@
 Name: kernel-exp
 License: GPLv2
 Version: 4.9
-Release: 143.1
+Release: 144.1
 ExclusiveArch: x86_64
 ExclusiveOS: Linux
 Summary: The Linux kernel
@@ -40,6 +40,8 @@ Requires(post): coreutils kmod
 Requires(posttrans): coreutils dracut
 
 Source0: %{name}-%{version}.135.tar.gz
+
+# *** kernel.org incremental patches
 Patch0: patch-4.9.135-136
 Patch1: patch-4.9.136-137
 Patch2: patch-4.9.137-138
@@ -48,9 +50,15 @@ Patch4: patch-4.9.139-140
 Patch5: patch-4.9.140-141
 Patch6: patch-4.9.141-142
 Patch7:	patch-4.9.142-143
+Patch8: patch-4.9.143-144
+
+# *** XCP-NG patches.
 Patch100: abi-version-4.9
 Patch101: 4.9-kernel-blktap2-driver.patch
+
+# *** XenServer patches. Unmodified unless stated otherwise.
 Patch102: 0001-xen-privcmd-return-ENOTTY-for-unimplemented-IOCTLs.patch
+# Patch103 modified to make it apply to newer kernel: removed ARM part.
 Patch103: 0001-xen-privcmd-Add-IOCTL_PRIVCMD_DM_OP.patch
 Patch104: 0001-xen-privcmd-add-IOCTL_PRIVCMD_RESTRICT.patch
 Patch105: restricted-privcmd.patch
@@ -366,7 +374,11 @@ fi
 %{_rpmconfigdir}/macros.d/macros.kernel
 
 %changelog
-* Sun Dec 07 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-143-1
+* Mon Dec 10 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-144.1
+- Added kernel incremental patch to 4.9.144
+- Separated XCP-NG & XenServer patches with comments about modified ones.
+
+* Sun Dec 07 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-143.1
 - Added patches 106-192 and kernel incremental patch to 4.9.143.
 
 * Sun Dec 02 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-0.0.6
