@@ -49,7 +49,7 @@ Patch3: patch-4.9.138-139
 Patch4: patch-4.9.139-140
 Patch5: patch-4.9.140-141
 Patch6: patch-4.9.141-142
-Patch7:	patch-4.9.142-143
+Patch7: patch-4.9.142-143
 Patch8: patch-4.9.143-144
 
 # *** XCP-NG patches.
