@@ -22,7 +22,7 @@
 Name: kernel-exp
 License: GPLv2
 Version: 4.9
-Release: 144.1
+Release: 146.1
 ExclusiveArch: x86_64
 ExclusiveOS: Linux
 Summary: The Linux kernel
@@ -51,6 +51,8 @@ Patch5: patch-4.9.140-141
 Patch6: patch-4.9.141-142
 Patch7: patch-4.9.142-143
 Patch8: patch-4.9.143-144
+Patch9: patch-4.9.144-145
+Patch10: patch-4.9.145-146
 
 # *** XCP-NG patches.
 Patch100: abi-version-4.9
@@ -145,6 +147,30 @@ Patch189: CP-13181-net-openvswitch-add-dropping-of-fip-and-lldp.patch
 Patch190: build-mipi-dsi-as-a-module.patch
 Patch191: intel-gvt-g-enable-out-of-tree-compile.patch
 Patch192: debug-pwq-null-point-deref.patch
+# Patch193-203 Modified to suite for 4.9 kernel
+Patch193: 0001-CIFS-handle-STATUS_USER_SESSION_DELETED.patch
+Patch194: 0001-net-ethtool-add-new-ETHTOOL_xLINKSETTINGS-API.patch
+Patch195: 0001-xen-setup-Don-t-relocate-p2m-initrd-over-existing-on.patch 
+Patch196: 0002-x86-xen-correct-dma_get_required_mask-for-Xen-PV-gue.patch
+Patch197: 0010-component-add-support-for-releasing-match-data.patch
+Patch198: 0011-fs-cifs-reopen-persistent-handles-on-reconnect.patch
+#Patch199: 0016-DLM-fix-to-use-sk_callback_lock-correctly.patch
+Patch200: 0132-VFS-Provide-empty-name-qstr.patch
+Patch201: amd-mxgpu.patch
+Patch202: kbuild-AFTER_LINK.patch
+Patch203: no-flr-quirk.patch
+Patch204: 0001-scsi-libfc-fix-a-deadlock-in-fc_rport_work.patch
+Patch205: 0019-genetlink-statically-initialize-families.patch
+Patch206: 0002-DLM-Eliminate-CF_WRITE_PENDING-flag.patch
+Patch207: 0003-DLM-Fix-saving-of-NULL-callbacks.patch
+Patch208: 0006-DLM-fix-race-condition-between-dlm_send-and-dlm_recv.patch
+Patch209: 0009-DLM-close-othercon-at-send-receive-error.patch
+Patch210: 0011-DLM-Reanimate-CF_WRITE_PENDING-flag.patch
+Patch211: 0012-DLM-use-CF_CLOSE-flag-to-stop-dlm_send-correctly.patch
+Patch212: 0014-DLM-fix-memory-leak-in-tcp_accept_from_sock.patch
+Patch213: 0017-DLM-fix-to-reschedule-rwork.patch
+Patch214: ipset-restore-kabi.patch
+Patch215: kexec-reserve-crashkernel-region.patch
 
 
 Source1: kernel-%{version}-%{_arch}.config
@@ -374,11 +400,15 @@ fi
 %{_rpmconfigdir}/macros.d/macros.kernel
 
 %changelog
+* Mon Dec 24 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-146.1
+- Added kernel incremental patch to 4.9.146
+- Added patches 193-215
+
 * Mon Dec 10 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-144.1
 - Added kernel incremental patch to 4.9.144
 - Separated XCP-NG & XenServer patches with comments about modified ones.
 
-* Sun Dec 07 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-143.1
+* Fri Dec 07 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-143.1
 - Added patches 106-192 and kernel incremental patch to 4.9.143.
 
 * Sun Dec 02 2018 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-0.0.6
