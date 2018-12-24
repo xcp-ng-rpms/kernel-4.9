@@ -1,3 +1,13 @@
+From cdf01226b26e98c79c13b335fbe0cbbbe850cf44 Mon Sep 17 00:00:00 2001
+From: David Howells <dhowells@redhat.com>
+Date: Tue, 4 Jul 2017 17:25:22 +0100
+Subject: [PATCH] VFS: Provide empty name qstr
+
+Provide an empty name (ie. "") qstr for general use.
+
+Signed-off-by: David Howells <dhowells@redhat.com>
+Signed-off-by: Al Viro <viro@zeniv.linux.org.uk>
+
 --- a/fs/dcache.c	2018-10-20 10:32:52.000000000 +0000
 +++ b/fs/dcache.c	2018-12-19 09:17:15.933519873 +0000
 @@ -90,6 +90,11 @@

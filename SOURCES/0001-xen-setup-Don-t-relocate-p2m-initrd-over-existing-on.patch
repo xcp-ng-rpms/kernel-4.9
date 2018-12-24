@@ -1,3 +1,16 @@
+From 9e03b7bb20e140a7f416baea12dfcb870080ae11 Mon Sep 17 00:00:00 2001
+From: Ross Lagerwall <ross.lagerwall@citrix.com>
+Date: Fri, 25 Nov 2016 13:41:05 +0000
+Subject: [PATCH] xen/setup: Don't relocate p2m/initrd over existing one
+
+When relocating the p2m/initrd, take special care not to relocate it so
+that is overlaps with the current location of the p2m/initrd. This is
+needed since the full extent of the current location is not marked as a
+reserved region in the e820 (and it shouldn't be since it is about to be
+moved).
+
+Signed-off-by: Ross Lagerwall <ross.lagerwall@citrix.com>
+
 --- a/arch/x86/xen/mmu.c	2018-12-17 16:05:11.633150396 +0000
 +++ b/arch/x86/xen/mmu.c	2018-12-20 11:32:59.439553841 +0000
 @@ -2071,7 +2071,7 @@

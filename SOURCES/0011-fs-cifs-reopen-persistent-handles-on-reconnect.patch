@@ -1,3 +1,22 @@
+From 52ace1ef1259e119a24a34b45cb800c4e7529090 Mon Sep 17 00:00:00 2001
+From: Steve French <smfrench@gmail.com>
+Date: Thu, 22 Sep 2016 19:23:56 -0500
+Subject: [PATCH 11/11] fs/cifs: reopen persistent handles on reconnect
+
+Continuous Availability features like persistent handles
+require that clients reconnect their open files, not
+just the sessions, soon after the network connection comes
+back up, otherwise the server will throw away the state
+(byte range locks, leases, deny modes) on those handles
+after a timeout.
+
+Add code to reconnect handles when use_persistent set
+(e.g. Continuous Availability shares) after tree reconnect.
+
+Signed-off-by: Aurelien Aptel <aaptel@suse.com>
+Reviewed-by: Germano Percossi <germano.percossi@citrix.com>
+Signed-off-by: Steve French <smfrench@gmail.com>
+
 --- a/fs/cifs/smb2pdu.c	2018-12-11 12:21:15.328265171 +0000
 +++ b/fs/cifs/smb2pdu.c	2018-12-11 17:31:31.932403016 +0000
 @@ -262,6 +262,9 @@

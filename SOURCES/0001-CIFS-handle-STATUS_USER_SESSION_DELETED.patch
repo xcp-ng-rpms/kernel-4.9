@@ -1,3 +1,14 @@
+From fa530556faac05d3e26c96eedc2fc1b899ca3e7f Mon Sep 17 00:00:00 2001
+From: Mark Syms <mark.syms@citrix.com>
+Date: Thu, 24 May 2018 09:47:31 +0100
+Subject: [PATCH] CIFS: 511c54a2f69195b28afb9dd119f03787b1625bb4 adds a check
+ for session expiry, status STATUS_NETWORK_SESSION_EXPIRED, however the server
+ can also respond with STATUS_USER_SESSION_DELETED in cases where the session
+ has been idle for some time and the server reaps the session to recover
+ resources.
+
+Handle this additional status in the same way as SESSION_EXPIRED.
+
 --- a/fs/cifs/smb2ops.c	2018-10-20 10:32:52.000000000 +0000
 +++ b/fs/cifs/smb2ops.c	2018-12-20 13:28:00.487325050 +0000
 @@ -1043,10 +1043,11 @@
