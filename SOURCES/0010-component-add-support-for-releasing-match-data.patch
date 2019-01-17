@@ -1,0 +1,27 @@
+From ce657b1cddf1f88c56ae683efa7130341c92808b Mon Sep 17 00:00:00 2001
+From: Russell King <rmk+kernel@arm.linux.org.uk>
+Date: Tue, 17 Nov 2015 12:08:01 +0000
+Subject: [PATCH 10/10] component: add support for releasing match data
+
+The component helper treats the void match data pointer as an opaque
+object which needs no further management.  When device nodes being
+passed, this is not true: the caller should pass its refcount to the
+component helper, and there should be a way to drop the refcount when
+the matching information is destroyed.
+
+This patch provides a per-match release method in addition to the match
+method to solve this issue.  Rather than using component_match_add(),
+users should use component_match_add_release() which takes an additional
+function pointer for releasing this reference.
+
+Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
+--- kernel-exp-4.9/include/linux/component.h	2018-10-20 10:32:52.000000000 +0000
++++ kernel-exp-4.9-new/include/linux/component.h	2018-12-19 10:28:11.458896987 +0000
+@@ -21,6 +21,7 @@
+ struct master;
+ 
+ struct component_master_ops {
++	int (*add_components)(struct device *, struct master *);
+ 	int (*bind)(struct device *master);
+ 	void (*unbind)(struct device *master);
+ };
