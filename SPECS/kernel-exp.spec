@@ -22,7 +22,7 @@
 Name: kernel-exp
 License: GPLv2
 Version: 4.9
-Release: 150.1
+Release: 156.1
 ExclusiveArch: x86_64
 ExclusiveOS: Linux
 Summary: The Linux kernel
@@ -57,6 +57,12 @@ Patch11: patch-4.9.146-147
 Patch12: patch-4.9.147-148
 Patch13: patch-4.9.148-149
 Patch14: patch-4.9.149-150
+Patch15: patch-4.9.150-151
+Patch16: patch-4.9.151-152
+Patch17: patch-4.9.152-153
+Patch18: patch-4.9.153-154
+Patch19: patch-4.9.154-155
+Patch20: patch-4.9.155-156
 
 # *** XCP-NG patches.
 Patch100: abi-version-4.9
@@ -404,6 +410,9 @@ fi
 %{_rpmconfigdir}/macros.d/macros.kernel
 
 %changelog
+* Wed Feb 13 2019 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-156.1
+- Added kernel incremental patch upto 4.9.156
+
 * Wed Jan 16 2019 Rushikesh Jadhav <rushikesh7@gmail.com> - 4.9-150.1
 - Added kernel incremental patch upto 4.9.150
  
