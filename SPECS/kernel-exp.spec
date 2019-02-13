@@ -183,7 +183,7 @@ Patch214: ipset-restore-kabi.patch
 Patch215: kexec-reserve-crashkernel-region.patch
 
 
-Source1: kernel-%{version}-%{_arch}.config
+Source1: kernel-%{version}-x86_64.config
 Source2: macros.kernel
 %if %{do_kabichk}
 Source3: check-kabi
