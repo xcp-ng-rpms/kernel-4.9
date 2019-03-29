@@ -25,7 +25,8 @@ Version: 4.9
 Release: 156.1%{dist}
 ExclusiveArch: x86_64
 ExclusiveOS: Linux
-Summary: The Linux kernel
+Summary: Alternate version of XCP-ng's Linux kernel
+BuildRequires: gcc
 BuildRequires: kmod
 BuildRequires: bc
 BuildRequires: hostname
